@@ -71,9 +71,9 @@ import math
 
 #FUNCTIONS FOR NUMBERS
 
-pi= 3.14
-x=2
-y=3.2
+# pi= 3.14
+# x=2
+# y=3.2
 #print(round(pi))
 #print(math.ceil(pi))
 #print(math.floor(pi))
@@ -185,13 +185,13 @@ y=3.2
 #         print(i)
 
 
-# LISTS used to store multpile variables
+# LISTS used to store multiple variables
 
 # food = ["pizza", "hamburgers", "hotdog", "spaghetti"]
 #
 # food[0]="sushi"
 
-# rint(food[0])
+# print(food[0])
 
 # FUNCTIONS FOR LISTS
 # food.append("ice cream")
@@ -276,5 +276,132 @@ y=3.2
 # print(first_name)
 # print(last_name)
 # print(last_character)
+
+
+# FUNCTIONS
+
+# def hello(first_name, last_name, age): # def + name + parentesis at the end ----- if there is inside a parameter call it in the definition
+#     print("hello " +first_name+" "+last_name+" you are "+str(age)+ " years old")
+#     print("have a nice day")
+#
+# hello("Lorenzo", "Lospennato", 21) # recall it with the name and the parentesis
+
+#RETURN STATEMENT ---functions send python values/objects back to the caller; these values/objects are known as the function's
+#                    return value
+
+# def multiply(number1, number2):
+#     # results=number1*number2
+#     # return results
+#     return number1*number2
+# x=multiply(6,8)
+# print(x)
+
+#KEYWORD ARGUMENT arguments preceded by ad identifier when we pass them to a function; the order of the arguments doesen't matter,
+#                 unlike positional arguments python knows the names of the arguments that our function receives
+
+# def hello(first,middle,last): #order of the arguments matter
+#     print("hello "+first+" "+middle+" "+last)
+#
+# hello(last="Lorenzo", middle="Giorgio", first="Lospennato") #we can use keyword arguments
+
+#NESTED FUNCTIONS CALLS
+
+# num=float(num)
+# num=abs(num)
+# num=round(num)
+# print(num)
+# print(round(abs(float(input("Enter a whole positive number: "))))) #it does the same thing
+
+#SCOPE the region that a variable is recognized
+#
+# name = "Lorenzo"  # global scope--- it is possible to have a global and local variable with the same name
+# def display_name():
+#     name = "Lorenzo" # Local scope, only available inside the function, if you call it outside the function it doesn't work
+#     print(name)
+#
+# display_name()
+# print(name)
+
+#*ARGS parameter that will pack all arguments into a tuple
+
+# def add(*stuff):
+#     sum = 0
+#     # stuff[0]=0 #not possible it does not support item assignment
+#     stuff = list(stuff) #a list can be changeable
+#     stuff[0]=0 # now it is possible to change
+#     for i in stuff:
+#         sum += i
+#     return sum
+#
+# print(add(1,2,3,4,5,6))
+
+#**kwargs parameter that will pack all arguments into a dictionary
+#         useful so that a function can accept a varying amount of keyword arguments
+
+# def hello(**names):
+#     # print("Hello "+ kwargs['first'] +" " + kwargs['last']+)
+#     print("hello", end=" ")
+#     for key,value in names.items():
+#         print(value, end=" ")
+#
+#
+# hello(title="Mister", first="Lorenzo", middle="Giacomo", last="Lospennato")
+
+#FORMAT METHOD IN PYTHON it is optional and it gives users more control when displaying output
+
+# animal = "cow"
+# item = "moon"
+# #
+# # # print("The " +animal +" jumper over the " +item )
+# # #better do to so
+# # print("The {1} jumped over the {0}".format("moon","cow"))
+# # print("The {animal} jumped over the {item}".format(item="moon",animal="cow"))
+#
+# text = "The {} jumper over the {}"
+# print(text.format(animal,item))
+
+# name = "Lorenzo"
+# # print("Hello, my name is {}".format(name))
+# print("Hello, my name is {:10}, nice to meet you".format(name)) #add some space after that parameter
+# print("Hello, my name is {:<10}, nice to meet you".format(name)) #space after the parameter
+# print("Hello, my name is {:>10}, nice to meet you".format(name))  #space before the parameter
+# print("Hello, my name is {:^10}, nice to meet you".format(name)) #it centers the space (half left and half right)
+
+# number = 3.14159
+# print("The number pi is {:.2f}".format(number)) #only the first do digit the dot
+
+# number = 1000
+# print("The number pi is {:,}".format(number)) #add a coma to all 1000 places
+# print("The number pi is {:b}".format(number)) #write it in binary
+# print("The number pi is {:o}".format(number)) #octal number
+# print("The number pi is {:X}".format(number)) #hexabecimal
+# print("The number pi is {:,}".format(number))
+# print("The number pi is {:E}".format(number)) #scientific notation
+
+#RANDOM generate random
+
+# import random
+#
+# x = random.randint(1,6)
+# y = random.random() # it generates a random between 0 and 1
+# mylist=['rock', 'paper', 'scissors']
+# z = random.choice(mylist)
+#
+# cards=[1,2,3,4,5,6,7,8,9,"J", "Q", "K", "A"]
+# #shuffle the desk
+# random.shuffle(cards)
+# print(cards)
+
+#EXCEPTION event detected during execution that interrupt the flow of a program
+
+try:
+    numerator= int(input("Enter a number to divide: "))
+    denominator= int(input("Enter a number to divide by: "))
+    results = numerator/denominator  # for example impossible to divide by 0
+    print(results)
+except Exception:
+    print("Something went wrong")
+
+
 
 
