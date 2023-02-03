@@ -392,16 +392,24 @@ import math
 # random.shuffle(cards)
 # print(cards)
 
-#EXCEPTION event detected during execution that interrupt the flow of a program
-
-try:
-    numerator= int(input("Enter a number to divide: "))
-    denominator= int(input("Enter a number to divide by: "))
-    results = numerator/denominator  # for example impossible to divide by 0
-    print(results)
-except Exception:
-    print("Something went wrong")
-
-
+#EXCEPTION event detected during execution that interrupt the flow of a program ----- TRY and EXCEPT
+# it is good to catch any exception separately
+# try:
+#     numerator= int(input("Enter a number to divide: "))
+#     denominator= int(input("Enter a number to divide by: "))
+#     results = numerator/denominator  # for example impossible to divide by 0
+#     # print(results)
+# except ZeroDivisionError as e:
+#     print(e)
+#     print("You cannot divide by zero idiot ")
+# # except Exception:
+# #     print("Something went wrong")
+# except ValueError as e:
+#     print(e)
+#     print("Enter only number please")
+# else: #it works only if we don't have any exeption
+#     print(results)
+# finally:  #generally use to close files opened before
+#     print("This will always execute")
 
 
