@@ -413,3 +413,100 @@ import math
 #     print("This will always execute")
 
 
+
+#FILES DETECTION
+# import os   #--> IT NEEDS TO BE IMPORTED TO WORK WITH FILES
+#
+# path = "C:\\Users\\loren\\OneDrive\\Desktop\\PERSONALE\\PYTHON\\folder"
+#
+# if os.path.exists(path):
+#     print("that location exists")
+#     if os.path.isfile(path):
+#         print("that is a file")
+#     elif os.path.isdir(path):
+#         print("that is a directory")
+# else:
+#     print("that location doesn't exist")
+
+#READING A FILE IN PYTHON
+# path = "C:\\Users\\loren\\OneDrive\\Desktop\\PERSONALE\\PYTHON\\test.txt"
+# try:
+#     with open(path) as file: #this will close the file automatically
+#         print(file.read())
+# except FileNotFoundError:
+#     print("That file was not found")
+#
+# print(file.closed)
+
+#WRITING FILE IN PYTHON -----w:write; a:append
+
+# text = "\nidiots"
+#
+# with open('test1.txt', 'a') as file:
+#     file.write(text)
+
+#COPYING FILES IN PYTHON
+
+#copyfile() = copies contents of a file
+#copy() = copyfile() + permission mode + destination can be a directory'
+#copy2() = copy() + copies metadata (file's creation and modification times)
+
+# import shutil
+
+# shutil.copyfile('test1.txt','C:\\Users\\loren\\OneDrive\\Desktop\\PERSONALE\\PYTHON\copy.txt')  #two arguments a source and a destination src.dst
+
+#MOVING FILES OR DIRECTORIES we have a source and a destination location
+
+# import os
+#
+# source = "foldertry"
+# destination = "C:\\Users\\loren\\OneDrive\\Desktop\\PERSONALE\\PYTHON\\foldertry"
+#
+# try:
+#     if os.path.exists(destination):
+#         print("There is already a file there")
+#     else:
+#         os.replace(source,destination)
+#         print(source+" was moved")
+# except FileNotFoundError:
+#     print(source+" was not found")
+
+#DELETING FILES
+
+# import os
+# import shutil
+#
+# path='empty_folder'
+#
+# try:
+#     # os.remove(path)
+#     os.rmdir(path) #to delete an empty folder
+#     shutil.rmtree(path) #delete a directory containing files
+# except FileNotFoundError:
+#     print("That file was not found")
+# except PermissionError:
+#     print("Ypu don't have permission to delete that")
+# except OSError:
+#     print("you cannot delete that using that function")
+# else:
+#     print(path+" was deleted")
+
+
+#MODULE it is a file containing python code. it may contains functions, classes, etc...
+#used with a modular programming, which is to separate a program into parts
+
+# import messages as msg
+
+# msg.hello()
+# msg.bye()
+
+# from messages import hello,bye
+# hello()
+# bye()
+
+from messages import *  #it means import all
+hello()
+bye()
+
+
+
