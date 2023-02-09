@@ -1063,8 +1063,165 @@ import math
 
 
 #FILTER FUNCTION filter()
-# It creates a collection of elements from an iterable for which a function return True
+# It creates a collection of elements from an iterable for which a function return True----->it takes all the elements that
+# respect the function's condition--- research all the results that meet the condition
 #filter(function,iterable)
 
-friends = [("Rachel",19),("Monica",18),("Phoebe",17),("Joey",16),("Chandler",21),("Ross",20)]
+# friends = [("Rachel",19),("Monica",18),("Phoebe",17),("Joey",16),("Chandler",21),("Ross",20)]
+#
+# #create another list with friends bigger than 18
+# age = lambda data:data[1]>= 18 #function to get all the friends bigger than 18
+#
+# drinking_buddies = list(filter(age, friends)) #filter function and iterable and cast it back to a list
+#
+# for i in drinking_buddies:
+#     print(i)
 
+#REDUCE FUNCTION
+#reduce() apply a function to an iterable and reduce it to a single cumulative value. It performs function on first two
+# elements and repeats process until 1 value remains
+#reduce(function, iterable)
+
+# import functools
+# # letters = ["H","E", "L", "L", "O"] #reduce it to a single cumulative value
+# #
+# # word = functools.reduce(lambda x,y: x+y,letters) #HE, HEL, HELL, HELLO untile only one value remains
+# # print(word)
+#
+# factorial = [5,4,3,2,1]
+# result = functools.reduce(lambda x,y: x*y,factorial) #5*4--- 5*4*3----- etc.
+# print(result)
+
+
+
+#LIST COMPREHENSION = a way to create a new list with less syntax, can mimic certain lambda functions, easier to read
+#                   list = [expression for item in iterable]
+#                   list = [expression for item in iterable if conditions]
+#                   list = [expression if/else for item in iterable] with if else the for is after
+
+# squares = [] #create an empty list
+# for i in range(1,11):
+#     squares.append (i*i)
+# print(squares)
+
+#using a list comprehension
+# squares = [i * i for i in range(1,11)]
+# print(squares)
+
+
+# students = [100,90,80,70,60,50,40,30,0]
+#
+# # passed_students = list(filter(lambda x:x>=60, students))
+#
+# #using list comprehension
+# passed_students = [i if i>=60 else "FAILED" for i in students]
+#
+# print(passed_students)
+
+
+#DICTIONARY COMPREHENSION = create dictionaries using an expression; can replace for loops and certain lambda functions
+
+#dictionary = {key : expression for (key,value) in iterable}
+
+# cities_in_F = {'New York':32, 'Boston':75, 'Los Angeles':100, 'Chicago':50}
+#
+# cities_in_C = {key: round((value-32)*(5/9)) for (key,value) in cities_in_F.items()}
+# print(cities_in_C)
+
+#-----------------------------------------------------------------------------------
+#dictionary = {key : expression for (key,value) in iterable if conditional}
+
+# weather = {'New York':"Snowing", 'Boston':"sunny", 'Los Angeles':"sunny", 'Chicago':"cloudy"}
+#
+# sunny_weather = {key : value for (key,value) in weather.items() if value=="sunny"}
+#
+# print(sunny_weather)
+
+# -------------------------------------------------------------------------------------
+# dictionary = {key : (if/else) for (key,value) in iterable}
+
+# cities = {'New York':32, 'Boston':75, 'Los Angeles':100, 'Chicago':50}
+# decs_cities = {key : ("WARM" if value >=40 else "COLD") for (key,value) in cities.items()}
+# print(decs_cities)
+
+#------------------------------------------------------------------------------------------
+#dictionary = {key : function(value) for (key,value) in iterable}
+
+# def check_temp(value):
+#     if value >=70:
+#         return "HOT"
+#     elif 69>= value >=40:
+#         return "WARM"
+#     else:
+#         return "COLD"
+#
+# cities = {'New York':32, 'Boston':75, 'Los Angeles':100, 'Chicago':50}
+# decs_cities = {key : check_temp(value) for (key,value) in cities.items()} #we have called a function defined above
+# print(decs_cities)
+
+
+#ZIP FUNCTION
+#zip(*iterable) = aggregate elements from two or more iterables (list, tuples, sets, etc.)
+#                 creates a zip object with paired elements stored in tuples for each element
+
+# usernames = ["Dude", "Bro", "Mister"]
+# passwords = ("p@ssword", "abc123", "guest")
+
+# users =list(zip(usernames,passwords))
+#
+# print(type(users))
+#
+# for i in users:
+#     print(i)
+
+#we can use more than 2 iterables
+# usernames = ["Dude", "Bro", "Mister"]
+# passwords = ("p@ssword", "abc123", "guest")
+# login_date = ["1/1/2021", "1/2/2021", "1/3/2021"]
+#
+# users = zip(usernames,passwords,login_date)
+#
+# for i in users:
+#     print(i)
+
+
+#if __name__ == '__main__'
+#1. Module can be run as a standalone program
+#2. Module can be imported and used by other modules
+
+
+# def hello():
+#     print("HELLO")
+#
+#
+# if __name__ == '__main__':
+#     hello()
+
+
+#TIME AND DATES
+
+# import time
+#
+# # print(time.ctime(0))  # it converts a time expressed in seconds since epoch to a readable string
+# #                       epoch = when your computer thinks time began (reference point)
+#
+# # print(time.time()) #return current seconds since epoch
+#
+# # print(time.ctime(time.time())) #convert that amounts of second into readable day and time
+#
+# # time_object = time.localtime()
+# # time_object = time.gmtime()
+# # # print(time_object)
+# # #to convert it into something readable
+# # local_time = time.strftime("%B %d %Y %H:%M:%S", time_object) #format depends on different directives
+# # print(local_time) #it prints the current time
+#
+# # time_string = "20 April, 2020"
+# # time_object = time.strptime(time_string, "%d %B, %Y")
+# # print(time_object) #we have a time object with all these keywords filled in with the data given
+#
+# #(year, month, day, hours, minutes, secs, #day of the week, #day of the year, dst)
+# time_tuple = (2020, 4, 20, 4, 20, 0, 0, 0, 0)
+# # time_string = time.asctime(time_tuple) #ASCTIME it converts tuples representation in time and day in readable string
+# time_string = time.mktime(time_tuple) #MKTIME converts in seconds since epoch
+# print(time_string)
