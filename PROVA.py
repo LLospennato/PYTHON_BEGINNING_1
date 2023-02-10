@@ -1225,3 +1225,322 @@ import math
 # # time_string = time.asctime(time_tuple) #ASCTIME it converts tuples representation in time and day in readable string
 # time_string = time.mktime(time_tuple) #MKTIME converts in seconds since epoch
 # print(time_string)
+
+
+
+#THREAD = a flow execution. Like a separate order of instructions. However each thread takes a turn running to achieve concurrency.
+#   GIL (global interpreter lock), allows only one thread to hold the control of the Python interpreter at any one time
+
+# cpu bound = program or task that spends most of its time waiting for internal events-- use multiprocessing
+# io bound = program or task that spends most of its time waiting for external events (user input..)
+#
+# import threading
+# import time
+#
+# def eat_breakfast():
+#     time.sleep(3)
+#     print("You eat breakfast")
+# def drink_coffe():
+#     time.sleep(4)
+#     print("You drink coffe")
+# def study():
+#     time.sleep(5)
+#     print("You finish studying")
+#
+# x = threading.Thread(target=eat_breakfast, args=())
+# x.start()
+#
+# y = threading.Thread(target=drink_coffe, args=())
+# y.start()
+#
+# z = threading.Thread(target=study, args=())
+# z.start()
+
+#the main thread has to wait for the syncronization of x,y,z and then move on
+# x.join()
+# y.join()
+# z.join()
+
+
+#we are running these tasks sequentially and not concurrently (in this way)
+# eat_breakfast()
+# drink_coffe()
+# study()
+
+
+# print(threading.active_count())
+# print(threading.enumerate())  # print the list of the threads
+# print(time.perf_counter())
+
+
+#DAEMON THREAD = a thread that runs in the background, not important for program to run
+#               your program will not wait for daemon threads to complete before exiting
+#               non-daemon threads cannot normally be killed, stay alive until task is complete
+
+
+# import threading
+# import time
+#
+# def timer():
+#     print()
+#     print()
+#     count = 0
+#     while True:
+#         time.sleep(1)
+#         count += 1
+#         print("logged in for: ", +count, " seconds")
+#
+# x = threading.Thread(target=timer,daemon=True)
+# x.start
+#
+# x.setDaemon(True)
+# print(x.isDaemon())
+#
+# answer = input("Do you wish to exit?")
+
+
+
+#MULTIPROCESSING = running tasks in parallel on different cpu cores; better for cpu bound tasks
+
+# from multiprocessing import Process, cpu_count
+# import time
+#
+#
+# def counter(num):
+#     count = 0
+#     while count < num:
+#         count += 1
+#
+# def main():
+#     print(cpu_count()) #maximum of processes that I can run simultaneously
+#
+#     a = Process(target=counter, args=(250000000,))
+#     b = Process(target=counter, args=(250000000,))
+#     c = Process(target=counter, args=(250000000,))
+#     d = Process(target=counter, args=(250000000,))
+#
+#     a.start()
+#     b.start()
+#     c.start()
+#     d.start()
+#
+#     a.join()
+#     b.join()
+#     c.join()
+#     d.join()
+#     print("finished in: ", time.perf_counter(), "seconds")
+#
+# if __name__ == '__main__':
+#     main()
+
+
+#GRAPHICAL INTERFACE
+
+from tkinter import *
+
+# widgets = GUI elements: buttons, textboxes, labels, images
+# windows = serves as a container to hold or contain these widgets
+
+# window = Tk() #instantiate an instanvr of a window
+# window.geometry("420x420") #change the dimension of the window
+# window.title("First GUI program")
+
+# icon = PhotoImage(file='Jpg_fototessera.jpg') #create a photo image that will be used as a 'logo' of the window
+# window.iconphoto(True, icon) #to change the 'logo'
+# window.config(background="#5cfcff") #change color of background (could take the value from google)
+#
+#
+# window.mainloop() #to desplay a window, lister to events
+
+#CREATE LABELS = area widgets that holds text and/or an image within a window
+
+# window = Tk()
+#
+# photo = PhotoImage(file = 'C:\\sers\\loren\\OneDrive\\Desktop\\POLIMI\\MODELLISTICA DELLE MACCHINE E DEGLI IMPIANTI ELETTRICI\\RELAZIONE & IMMAGINI\\Logo_Politecnico_Milano.png')
+#
+# label = Label(window,text="Hello World",font=('Arial',40,'bold'),fg='#00FF00', bg='black',relief=RAISED,bd=10,padx=20,pady=20,compound='bottom')
+# #parentesis are the constructor of the label; inside the parentesis the container is passed --foreground and background of the text ---
+# # --> bord to the text ---> compound where to set the picture
+# label.pack() #how to add the label to the window ---> pack function
+# # label.place(x=0, y=0) #in the top left corner
+# # label.place(x=100, y=100)
+#
+# window.mainloop()
+
+
+#CREATE BUTTONS
+
+# count = 0
+# def click():
+#     global count
+#     count += 1
+#     print(count)
+#
+#
+# window = Tk()
+#
+# photo = PhotoImage(file='img.png')
+#
+# button = Button(window,
+#                 text="Click me!",
+#                 command=click,
+#                 font=("Comic Sans", 30),
+#                 fg="#00FF00",
+#                 bg="black",
+#                 activeforeground="#00FF00",
+#                 activebackground="black",
+#                 state=ACTIVE,
+#                 image=photo,
+#                 compound='bottom')
+# button.pack()
+#
+#
+# window.mainloop()
+
+
+# ENTRY WIDGET
+# from tkinter import *
+#
+# def submit():
+#     username = entry.get() #it takes what we write in the entry
+#     print("Hello " +username)
+#     entry.config(state=DISABLED)
+#
+# def delete():
+#     entry.delete(0,END)
+#
+# def backspace():
+#     entry.delete(len(entry.get())-1, END)
+#
+# window = Tk()
+#
+#
+# entry = Entry(window,
+#               font=("Arial",50),
+#               fg="#00FF00",
+#               bg="black",
+#               show="*") #always state where we are placing the entry ---> in the window
+# entry.insert(0,'Spongebob ')
+# entry.pack(side=LEFT)
+#
+# submit_button = Button(window,text="submit", command=submit)
+# submit_button.pack(side=RIGHT)
+# delete_button = Button(window,text="delete", command=delete)
+# delete_button.pack(side=RIGHT)
+# backspace_button = Button(window,text="backspace", command=backspace)
+# backspace_button.pack(side=RIGHT)
+# window.mainloop()
+
+
+
+#CUSTOMIZE CHECK BUTTON
+
+# from tkinter import *
+#
+# def display():
+#     if(x.get() == 1):
+#         print("You agree")
+#     else:
+#         print("you don't agree")
+#
+# window = Tk()
+#
+# x = IntVar()
+#
+# photo = PhotoImage(file='img.png')
+# check_button = Checkbutton(window,
+#                            text="I agree to something",
+#                            variable=x,
+#                            onvalue=1,  #if boolean True and change IntVar in BooleanVar and if statement
+#                            offvalue=0,
+#                            command=display,
+#                            font=('Arial', 20),
+#                            fg='#00FF00',
+#                            bg='black',
+#                            activeforeground='#00FF00',
+#                            activebackground='black',
+#                            padx=25,
+#                            pady=10,
+#                            image=photo,
+#                            compound='left')
+# check_button.pack()
+#
+# window.mainloop()
+
+
+#CREATRE RADIOBUTTON = you can only select one from a group
+
+# from tkinter import *
+#
+# food = ["pizza", "hamburger", "hotdog"]
+#
+# def order():
+#     if (x.get()==0):
+#         print("you ordered pizza")
+#     elif (x.get()==1):
+#         print("you ordered hamburger")
+#     elif (x.get() == 2):
+#         print("you ordered hotdog")
+#     else:
+#         print("huh?")
+#
+# window = Tk()
+#
+# pizzaImage = PhotoImage(file='img_1.png')
+# burgerImage = PhotoImage(file='img_2.png')
+# hotdogImage = PhotoImage(file='img_3.png')
+# foodImages = [pizzaImage,burgerImage,hotdogImage]
+# x=IntVar()
+#
+# for index in range(len(food)):
+#     radiobutton = Radiobutton(window, text=food[index], #add text to radio buttons
+#                               variable=x, #groups radiobuttons together if they share the same variables
+#                               value=index, #assigns each radiobutton a different value
+#                               padx=25, #adds padding on x axis
+#                               font=("Impact", 50),
+#                               # image=foodImages[index], #adds images to radiobuttons
+#                               compound='left',
+#                               indicatoron=0, #eliminate circle indicators
+#                               command=order, #set command of radiobutton to function
+#                               )
+#     radiobutton.pack(anchor=W)
+#
+# window.mainloop()
+
+
+#CREATE A SLIDING SCALE IN PYTHON
+
+# from tkinter import *
+#
+# def submit():
+#     print("The temperature is " +str(scale.get())+" degrees C")
+#
+# window = Tk()
+#
+# hotimage = PhotoImage(file='img_4.png')
+# hotLabel = Label(image=hotimage)
+# hotLabel.pack()
+#
+# scale = Scale(window,
+#               from_=0,
+#               to=100,
+#               length=600,
+#               orient=VERTICAL, #orientation of the scale
+#              font=("Consolas",20),
+#               tickinterval=10,#it sets numeric intervals to the scale
+#               # showvalue = 0 , #it hides the current value
+#               resolution= 5, #increment of slider
+#               troughcolor='#69EAFF', #it changes the color of the bar
+#               fg='#FF1C00',
+#               bg='black')
+# scale.set(((scale['from']-scale['to'])/2)+scale['to']) #it brings the value to half of the scale
+#
+# scale.pack()
+#
+# coldimage = PhotoImage(file='img_5.png')
+# coldLabel = Label(image=coldimage)
+# coldLabel.pack()
+#
+# button = Button(window, text='submit', command=submit)
+# button.pack()
+# window.mainloop()
