@@ -1544,3 +1544,213 @@ from tkinter import *
 # button = Button(window, text='submit', command=submit)
 # button.pack()
 # window.mainloop()
+
+
+#CREATE A LISTBOX = a listing of selectable text items within it's own container (for example an online menu)
+
+# def submit():
+#
+#     food = []
+#
+#     for index in listbox.curselection():
+#         food.insert(index,listbox.get(index))
+#
+#     print("you have ordered: ")
+#     for index in food:
+#         print(index)
+#     #print(listbox.get(listbox.curselection()))
+#
+# def add():
+#     listbox.insert(listbox.size(),entryBox.get())
+#     listbox.config(height=listbox.size())  #it adjusts the size of the list
+#
+# def delete():
+#     # listbox.delete(listbox.curselection())
+#     for index in reversed(listbox.curselection()):
+#         listbox.delete(index)
+#
+#     listbox.config(height=listbox.size())
+# from tkinter import *
+#
+# window = Tk()
+#
+# listbox = Listbox(window,
+#                   bg="#f7ffde",
+#                   font=("Constantia",35),
+#                   width=12,
+#                   selectmode=MULTIPLE, #need to be added if we want to select multiple items
+#                   )
+# listbox.pack()
+#
+#
+# listbox.insert(1,"pizza")
+# listbox.insert(2,"pasta")
+# listbox.insert(3,"garlic bread")
+# listbox.insert(4,"soup")
+# listbox.insert(5,"salad")
+#
+# listbox.config(height=listbox.size())
+#
+# entryBox = Entry(window)
+# entryBox.pack()
+#
+#
+# submitButton = Button(window,text="submit", command=submit)
+# submitButton.pack()
+#
+# addButton = Button(window,text="add", command=add)
+# addButton.pack()
+#
+# deleteButton = Button(window,text="delete", command=delete)
+# deleteButton.pack()
+#
+# window.mainloop()
+
+
+#HOW TO CREATE MESSAGE BOXES IN PYTHON
+
+from tkinter import *
+from tkinter import messagebox #import messagebox library
+# def click():
+    # messagebox.showinfo(title='This is an info message box',message='You are a person')
+    # while(True):
+    #     messagebox.showwarning(title='Warning', message='You have a virus')
+    # messagebox.showerror(title='Error', message='Something went wrong')
+    # if messagebox.askokcancel(title='Ask ok cancel', message='Do you want to do the thing?'):
+    #     print("You did the thing")
+    # else:
+    #     print("You canceled the thing")
+    # messagebox.askretrycancel(title='ask retry cancel', message='Do you want to retry the thing?')
+    # if messagebox.askyesno(title='ask yes or no', message='Do you like cakes?'): #it returns booleans
+    #     print("I like cake too")
+    # else:
+    #     print("Why do you don't like cakes?")
+    # answer = messagebox.askquestion(title='ask question', message='Do you like pie?')
+    # if(answer == "yes"):
+    #     print("I like pie too")
+    # else:
+    #     print("You don't like pie")
+#     answer = messagebox.askyesnocancel(title='yes, no or cancel', message='Do you like to code?',icon='error') #icon:warning, info, error
+#     if (answer==True):
+#         print("You like to code")
+#     elif (answer==False):
+#         print("Why don't you like coding?")
+#     else:
+#         print("You have dodged the question")
+#
+# window = Tk()
+#
+# button = Button(window, command=click, text="click me")
+# button.pack()
+#
+# window.mainloop()
+
+
+
+
+#COLOR CHOOSER MODULE
+
+# from tkinter import *
+# from tkinter import colorchooser #submodule
+#
+# def click():
+#     color = colorchooser.askcolor() #you can select the color you want
+#     # print(color)
+#     colorHex = color[1]
+#     # print(colorHex)
+#     window.config(bg=colorHex) #it will change the background color
+#
+#
+# window = Tk()
+#
+# window.geometry("420x420")
+#
+# button = Button(text="click me", command=click)
+# button.pack()
+#
+# window.mainloop()
+
+
+
+#CREATE TEXT AREA
+#text widget = functions like a text area, you can enter a multiple lines of text
+
+# from tkinter import *
+# def submit():
+#     input = text.get("1.0",END) #1.0 is the first line
+#     print(input)
+#
+# window = Tk()
+#
+# text = Text(window,
+#             bg="light yellow",
+#             font=("Ink Free",25),
+#             height=8, #amount of characters that this is tall
+#             width=20, #amount of characters that this is long
+#             padx=20,
+#             pady=20,
+#             fg="purple")
+# text.pack()
+#
+# button = Button(window,text="submit", command=submit)
+# button.pack()
+# window.mainloop()
+
+
+
+#FILE DIALOG ---> open and read the content
+
+
+# from tkinter import *
+# from tkinter import filedialog
+#
+# def openFile():
+#    filepath =  filedialog.askopenfilename() #it returns the file path
+#    file = open(filepath,'r')
+#    print(file.read())
+#    file.close()
+#
+#
+#
+# window = Tk()
+#
+# button = Button(text="Open", command=openFile)
+# button.pack()
+#
+# window.mainloop()
+
+
+
+#SAVE FILE IN THE COMPUTER
+
+
+# from tkinter import *
+# from tkinter import filedialog
+#
+# def saveFile():
+#     file = filedialog.asksaveasfile(#initialdir="", if we want to open with the path directly from here
+#                                     defaultextension='.txt',
+#                                     filetypes=[     #it adds the type of file for which you can save the file
+#                                         ("Text file", ".txt"),
+#                                         ("HTML file", ".html"),
+#                                         ("All file", ".*"),
+#                                     ])
+#
+#     if file is None: #to add so as if we don't click where to save the file it works (we must have to select something)
+#         return
+#     # filetext = str(text.get("1.0",END))
+#     filetext = input("Enters some test") #if we want to add the text from the command window
+#     file.write(filetext)
+#     file.close()
+#
+# window = Tk()
+#
+# button = Button(text='save', command=saveFile)
+# button.pack()
+#
+# text = Text(window)
+# text.pack()
+#
+# window.mainloop()
+
+
