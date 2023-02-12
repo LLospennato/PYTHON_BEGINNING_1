@@ -1754,3 +1754,321 @@ from tkinter import messagebox #import messagebox library
 # window.mainloop()
 
 
+#CREATE A MENU BAR
+
+# from tkinter import*
+#
+# def openFile():
+#     print("File has been opened")
+# def saveFile():
+#     print("File has been saved")
+# def cut():
+#     print("you cut some text")
+# def copy():
+#     print("you copied some text")
+# def paste():
+#     print("you pasted some text")
+# window = Tk()
+#
+# saveImage = PhotoImage(file="img_6.png")
+#
+# menubar = Menu(window)
+# window.config(menu=menubar)
+#
+# fileMenu = Menu(menubar, tearoff=0,font=("MV Boli",15)) #tearoff = 0 it gets rid of the line on the drop down menu
+# menubar.add_cascade(label="File",menu=fileMenu) #this will give us a drop down menu
+# fileMenu.add_command(label="Open",command=openFile)
+# fileMenu.add_command(label="Save",command=saveFile,image=saveImage,compound='left')
+# fileMenu.add_separator() #it adds a separator
+# fileMenu.add_command(label="Exit",command=quit) #pressing exit it closes the window (quit)
+#
+# editMenu = Menu(menubar, tearoff=0)
+# menubar.add_cascade(label="Edit",menu=editMenu)
+# editMenu.add_command(label="Cut",command=cut)
+# editMenu.add_command(label="Copy",command=copy)
+# editMenu.add_command(label="Paste",command=paste)
+#
+# window.mainloop()
+
+
+#FRAMES = a rectangular container to group and hold widgets
+
+# from tkinter import *
+#
+# window = Tk()
+#
+# frame = Frame(window,bg="pink",bd=5,relief=SUNKEN)
+# # frame.pack(side=BOTTOM)
+# frame.place(x=100, y=100)
+#
+#
+# Button(frame, text="W", font=("Consolas",25),width=3).pack(side=TOP)  #since we added the buttons to the frame and not to the window
+# #                                                                       they are all contained in one frame
+# Button(frame, text="A", font=("Consolas",25),width=3).pack(side=LEFT)
+# Button(frame, text="S", font=("Consolas",25),width=3).pack(side=LEFT)
+# Button(frame, text="D", font=("Consolas",25),width=3).pack(side=LEFT)
+#
+#
+# window.mainloop()
+
+
+#CREATE NEW WINDOWS
+
+# from tkinter import *
+#
+# def create_window():
+#     # new_window = Toplevel()  #Toplevel() = new window 'on top' of other windows. Linked to a 'bottom' window (if bottom closed alsi the top one)
+#     new_window = Tk()   #new independent window
+#     old_window.destroy()    #this will close out old window when we press create new window
+#
+# old_window = Tk()
+#
+# Button(old_window,text="Create new window", command=create_window).pack()
+#
+# old_window.mainloop()
+
+
+
+#CREATE SEPARATE TABS
+
+# from tkinter import *
+# from tkinter import ttk #it gives us access to many widgets
+#
+# window = Tk()
+#
+# notebook = ttk.Notebook(window)  #widget that manages a collection of windows/displays
+#
+# tab1 = Frame(notebook) #new frame for tab1
+# tab2 = Frame(notebook)
+#
+# notebook.add(tab1,text="Tab 1")
+# notebook.add(tab2,text="Tab 2")
+# notebook.pack(expand=True, fill="both") #it expands to fill any space not otherwise used; fill = fille space on x and y axis
+#
+# Label(tab1,text="Hello , this is tab 1",width=50, height=25).pack()
+# Label(tab2,text="Hello , this is tab 2",width=50, height=25).pack()
+#
+# window.mainloop()
+
+
+#GRID GEOMETRY MANAGER
+#grid() = it organizes widgets in a table/like structure in a parent
+
+# from tkinter import *
+#
+# window = Tk()
+#
+# titleLabel = Label(window,text="Enter your info", font=("Arial",25)).grid(row=0,column=0,columnspan=2)
+#
+# firstNameLabel = Label(window,text="First name: ",width=20,bg="red").grid(row=1,column=0) #we use grid rather than pack otherwise it would have placed the two one above the other
+# firstNameEntry = Entry(window).grid(row=1,column=1)
+#
+# lastNameLabel = Label(window,text="Last name: ",bg="green").grid(row=2,column=0)
+# lasttNameEntry = Entry(window).grid(row=2,column=1)
+#
+# emailLabel = Label(window,text="Email: ",bg="blue",width=30).grid(row=3,column=0)
+# emailEntry = Entry(window).grid(row=3,column=1)
+#
+# submitButton = Button(window,text="Submit").grid(row=4, column=0,columnspan=2) #columnspan=2 it will be between the two columns that we have
+#
+# window.mainloop()
+
+
+
+#CREATE A PROGRESS BAR
+
+# from tkinter import*
+# from tkinter.ttk import*
+# import time
+#
+# def start():
+#     tasks = 10
+#     x = 0
+#     while (x<tasks):
+#         time.sleep(1)
+#         bar['value']+=10
+#         x += 1
+#         percent.set(str(int((x/tasks)*100))+"%")
+#         text.set(str(x)+"/"+str(tasks)+" tasks completed")
+#         window.update_idletasks() #after each iteration we have to update the window
+#
+# window = Tk()
+#
+# percent = StringVar()
+# text = StringVar()
+#
+# bar = Progressbar(window,orient=HORIZONTAL,length=300)
+# bar.pack(pady=10)
+#
+# percentLabel = Label(window,textvariable=percent).pack()
+# taskLabel = Label(window,textvariable=text).pack()
+#
+# button = Button(window, text="download", command=start).pack()
+#
+# window.mainloop()
+
+
+
+#CANVAS WIDGETS TO DRAW SHAPES
+
+# from tkinter import *
+#
+# window = Tk()
+#
+# canvas = Canvas(window,height=500,width=500)
+# canvas.create_line(0,0, 500,500, fill="blue",width=5) #(x,y) start , (x,y) end
+# canvas.create_line(0,500, 500,0, fill="red",width=5)
+# canvas.create_rectangle(50,50,250,250, fill="purple")
+#we can also provides to the polygon a list of points
+# points = [250,0,500,500,0,500]
+# canvas.create_polygon(points, fill="yellow",outline="black",width=5)
+# canvas.create_arc(0,0,500,500,fill="green",style=PIESLICE,start=270,extent=180)
+# canvas.create_arc(0,0,500,500,fill="red",extent=180,width=10)
+# canvas.create_arc(0,0,500,500,fill="white",extent=180,start=180,width=10)
+# canvas.create_oval(190,190,310,310,fill="white",width=10)
+# canvas.pack()
+#
+# window.mainloop()
+
+
+
+#CREATE KEY EVENTS
+
+# from tkinter import *
+#
+# def doSomething(event):
+    # print("You pressed: " +event.keysym)
+#     label.config(text=event.keysym)
+# window = Tk()
+#
+# window.bind("<Key>", doSomething) #event (when in the keybord you press that stuff you perform the function), function
+#
+# label = Label(window,font=("Helvetica",100))
+# label.pack()
+#
+# window.mainloop()
+
+
+
+#MOUSE EVENTS
+
+# from tkinter import *
+#
+# def doSomething(event):
+#     print("Mouse coordinates: " + str(event.x) +","+str(event.y))
+#
+# window = Tk()
+
+# window.bind("<Button-1>",doSomething)  #event, function   button-1 left side -2 scroll wheel -3 right
+# window.bind("<ButtonRelease>",doSomething)
+# window.bind("<Enter>",doSomething) #when I enter the window
+# window.bind("<Leave>",doSomething)
+# window.bind("<Motion>",doSomething) #where the mouse moved
+# window.mainloop()
+
+
+
+#HOW TO DRAG AND DROPS WIDGETS
+
+# from tkinter import *
+#
+# def drag_start(event):
+#     widget = event.widget #it is used in order to deal with more labels
+#     #we are saving the coordinates of where we click within the label
+#     widget.startX = event.x
+#     widget.startY = event.y
+#
+# def drag_motion(event):
+#     widget = event.widget
+#     x = widget.winfo_x() - widget.startX + event.x  #label.winfo_x -> it will get the top left x coordinate of our label of the window
+#     #                                              where we are in; label.startX ->place where we clicked the label; event.x where we begin dragging
+#     y = widget.winfo_y() - widget.startY + event.y
+#     widget.place(x=x,y=y) #it replaces the label
+#
+#
+# window = Tk()
+#
+# label = Label(window,bg="red", width=10, height=5)
+# label.place(x=0,y=0)
+#
+# label2 = Label(window,bg="blue", width=10, height=5)
+# label2.place(x=100,y=100)
+#
+# label.bind("<Button-1>", drag_start)
+# label.bind("<B1-Motion>", drag_motion)
+#
+# label2.bind("<Button-1>", drag_start)
+# label2.bind("<B1-Motion>", drag_motion)
+#
+# window.mainloop()
+
+
+
+#HOW TO MOVE IMAGES
+
+from tkinter import *
+
+# --------------------------------------------------------------
+#1 move a image within a window
+# def move_up(event):
+#     label.place(x=label.winfo_x(),y=label.winfo_y()-10)
+# def move_down(event):
+#     label.place(x=label.winfo_x(),y=label.winfo_y()+10)
+# def move_left(event):
+#     label.place(x=label.winfo_x()-10,y=label.winfo_y())
+# def move_right(event):
+#     label.place(x=label.winfo_x()+10,y=label.winfo_y())
+
+
+# window = Tk()
+# window.geometry("500x500")
+#
+# window.bind("<Up>",move_up)
+# window.bind("<Down>",move_down)
+# window.bind("<Left>",move_left)
+# window.bind("<Right>",move_right)
+#
+#
+# myimage = PhotoImage(file='img_8.png')
+# label = Label(window,image=myimage,)
+# label.place(x=0,y=0)
+#
+#
+#
+# window.mainloop()
+
+
+# ---------------------------------------------------
+#2 move images on a canvas
+
+# from tkinter import *
+#
+# def move_up(event):
+#      canvas.move(myimage,0,-10) #name of the canvas + move function (image we want to use, amount of pixels we want to move X, Y)
+# def move_down(event):
+#      canvas.move(myimage,0,10)
+# def move_left(event):
+#      canvas.move(myimage,-10,0)
+# def move_right(event):
+#     canvas.move(myimage,10,0)
+#
+#
+# window = Tk()
+#
+# window.bind("<Up>",move_up)
+# window.bind("<Down>",move_down)
+# window.bind("<Left>",move_left)
+# window.bind("<Right>",move_right)
+#
+# canvas = Canvas(window,width=500,height=500)
+# canvas.pack()
+#
+# photoimage = PhotoImage(file='img_8.png')
+# myimage = canvas.create_image(0,0,image=photoimage,anchor=NW) #anchor to fix the fact the image is not all visible
+#
+# window.mainloop()
+
+
+
+
+#HOW CREATE 2D ANIMATIONS
