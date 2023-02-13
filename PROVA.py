@@ -2071,4 +2071,110 @@ from tkinter import *
 
 
 
-#HOW CREATE 2D ANIMATIONS
+#HOW CREATE 2D ANIMATIONS -->animate an image an a canvas
+
+# from tkinter import *
+# import time
+# #constants
+# WIDTH = 500
+# HEIGHT= 500
+# xVELOCITY = 3
+# yVELOCITY = 2
+#
+# window = Tk()
+#
+# canvas = Canvas(window, width=WIDTH, height=HEIGHT)
+# canvas.pack()
+#
+# #if we want the background we have to add it before everything
+# background_photo = PhotoImage(file='img_7.png')
+# background = canvas.create_image(0,0, image=background_photo,anchor=NW)
+#
+# photo_image = PhotoImage(file='img_8.png')
+# my_image = canvas.create_image(0,0, image=photo_image,anchor=NW)
+#
+# image_width = photo_image.width()
+# image_height = photo_image.height()
+#
+# while True:
+#     coordinates = canvas.coords(my_image)
+#     print(coordinates)
+#     if(coordinates[0]>=(WIDTH-image_width) or coordinates[0]<0):
+#         xVELOCITY = -xVELOCITY
+#     if (coordinates[1] >= (HEIGHT - image_height) or coordinates[1] < 0):
+#         yVELOCITY = -yVELOCITY
+#     canvas.move(my_image, xVELOCITY,yVELOCITY) #but it will disappear
+#     window.update()
+#     time.sleep(0.01) #il sleeps for 0.01s
+#
+#
+#
+# window.mainloop()
+
+
+
+#HOW TO ANIMATE MULTIPLE OBJECTS
+
+# from tkinter import *
+# from Ball import *
+# import time
+#
+# window = Tk()
+#
+# WIDTH = 500
+# HEIGHT = 500
+#
+# canvas = Canvas(window,width=WIDTH,height=HEIGHT)
+# canvas.pack()
+#
+# volley_ball = Ball(canvas,0,0,100,1,1,"white")
+# tennis_ball = Ball(canvas,0,0,50,4,3,"yellow")
+# basket_ball = Ball(canvas,0,0,125,8,7,"orange")
+# while True:
+#     volley_ball.move()
+#     tennis_ball.move()
+#     basket_ball.move()
+#     window.update()
+#     time.sleep(0.01)
+#
+# window.mainloop()
+
+
+
+#HOW TO CREATE A CLOCK PROGRAM IN PYTHON
+
+# from tkinter import *
+# from time import *
+#
+# def update():
+#     time_string = strftime("%I:%M:%S %p")  #to return the current time
+#     time_label.config(text=time_string)
+#
+#     day_string = strftime("%A")  # to return the current time
+#     day_label.config(text=day_string)
+#
+#     date_string = strftime("%B %d, %Y")  # to return the current time
+#     date_label.config(text=date_string)
+#
+#     window.after(1000,update) #to update the function (milliseconds, recursive function)
+#
+# window = Tk()
+#
+# time_label =Label(window,font=("Arial",50),fg="#00FF00",bg="black")
+# time_label.pack()
+# day_label =Label(window,font=("Ink free",25))
+# day_label.pack()
+# date_label =Label(window,font=("Ink free",30))
+# date_label.pack()
+# update()
+#
+# window.mainloop()
+
+
+#RUN PY FILE USING THE COMMAND PROMPT
+
+print("Hello world")
+
+name = input("What's your name?: ")
+
+print("Hello "+name)
